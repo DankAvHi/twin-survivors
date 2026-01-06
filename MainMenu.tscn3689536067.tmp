@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdpupmkhswmw4"]
+
+[ext_resource type="Script" uid="uid://cf11ownshopse" path="res://main_menu.gd" id="1_eiy7p"]
+[ext_resource type="Texture2D" uid="uid://dd43ywkfidutk" path="res://assets/MainMenu.jpg" id="1_i26rj"]
+
+[sub_resource type="SystemFont" id="SystemFont_i26rj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eiy7p"]
+font = SubResource("SystemFont_i26rj")
+font_size = 64
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eiy7p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i26rj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainScreen" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/MainScreen"]
+layout_mode = 2
+text = "Twin Survivors"
+label_settings = SubResource("LabelSettings_eiy7p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainScreen"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="CenterContainer/MainScreen/VBoxContainer"]
+layout_mode = 2
+text = "Сделать джамп"
+
+[node name="Settings" type="Button" parent="CenterContainer/MainScreen/VBoxContainer"]
+layout_mode = 2
+text = "Крутилки"
+
+[node name="Exit" type="Button" parent="CenterContainer/MainScreen/VBoxContainer"]
+layout_mode = 2
+text = "Ливнуть"
+
+[node name="SettingsScreen" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsScreen"]
+layout_mode = 2
+text = "Крутилки"
+label_settings = SubResource("LabelSettings_eiy7p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/SettingsScreen"]
+layout_mode = 2
+
+[node name="ChangeWindowMode" type="CheckButton" parent="CenterContainer/SettingsScreen/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "На весь моник"

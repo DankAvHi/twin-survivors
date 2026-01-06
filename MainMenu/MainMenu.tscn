@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdpupmkhswmw4"]
+
+[ext_resource type="Texture2D" uid="uid://dd43ywkfidutk" path="res://assets/MainMenu.jpg" id="1_i26rj"]
+[ext_resource type="Script" uid="uid://bh17u4sgqxcyp" path="res://MainMenu/change_window_mode.gd" id="2_eiy7p"]
+[ext_resource type="Script" uid="uid://bacpjasy5r40p" path="res://MainMenu/open_settings.gd" id="2_h7a2f"]
+[ext_resource type="Script" uid="uid://1ty31hf71kf" path="res://MainMenu/exit.gd" id="3_430ii"]
+[ext_resource type="Script" uid="uid://y27m8j2eo7bp" path="res://MainMenu/close_settings.gd" id="4_qoqlk"]
+[ext_resource type="Script" uid="uid://ln7uh0jilp0" path="res://MainMenu/change_resolution.gd" id="5_3p42x"]
+
+[sub_resource type="SystemFont" id="SystemFont_i26rj"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_eiy7p"]
+font = SubResource("SystemFont_i26rj")
+font_size = 64
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i26rj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainScreen" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/MainScreen"]
+layout_mode = 2
+text = "Twin Survivors"
+label_settings = SubResource("LabelSettings_eiy7p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainScreen"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="CenterContainer/MainScreen/VBoxContainer"]
+layout_mode = 2
+text = "Сделать джамп"
+
+[node name="Settings" type="Button" parent="CenterContainer/MainScreen/VBoxContainer"]
+layout_mode = 2
+text = "Крутилки"
+script = ExtResource("2_h7a2f")
+
+[node name="Exit" type="Button" parent="CenterContainer/MainScreen/VBoxContainer"]
+layout_mode = 2
+text = "Ливнуть"
+script = ExtResource("3_430ii")
+
+[node name="SettingsScreen" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsScreen"]
+layout_mode = 2
+text = "Крутилки"
+label_settings = SubResource("LabelSettings_eiy7p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/SettingsScreen"]
+layout_mode = 2
+
+[node name="ChangeWindowMode" type="CheckButton" parent="CenterContainer/SettingsScreen/VBoxContainer"]
+layout_mode = 2
+text = "На весь моник"
+script = ExtResource("2_eiy7p")
+
+[node name="ChangeResolutionContainer" type="HBoxContainer" parent="CenterContainer/SettingsScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ChangeResolutionText" type="Label" parent="CenterContainer/SettingsScreen/VBoxContainer/ChangeResolutionContainer"]
+layout_mode = 2
+text = "Колл-во пикселей"
+
+[node name="ChangeResolution" type="OptionButton" parent="CenterContainer/SettingsScreen/VBoxContainer/ChangeResolutionContainer"]
+layout_mode = 2
+selected = 0
+fit_to_longest_item = false
+item_count = 2
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 1
+script = ExtResource("5_3p42x")
+
+[node name="CloseSettings" type="Button" parent="CenterContainer/SettingsScreen/VBoxContainer"]
+layout_mode = 2
+text = "Камбэк"
+script = ExtResource("4_qoqlk")
+
+[connection signal="pressed" from="CenterContainer/MainScreen/VBoxContainer/Settings" to="CenterContainer/MainScreen/VBoxContainer/Settings" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/MainScreen/VBoxContainer/Exit" to="CenterContainer/MainScreen/VBoxContainer/Exit" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/SettingsScreen/VBoxContainer/ChangeWindowMode" to="CenterContainer/SettingsScreen/VBoxContainer/ChangeWindowMode" method="_on_pressed"]
+[connection signal="item_selected" from="CenterContainer/SettingsScreen/VBoxContainer/ChangeResolutionContainer/ChangeResolution" to="CenterContainer/SettingsScreen/VBoxContainer/ChangeResolutionContainer/ChangeResolution" method="_on_item_selected"]
+[connection signal="pressed" from="CenterContainer/SettingsScreen/VBoxContainer/CloseSettings" to="CenterContainer/SettingsScreen/VBoxContainer/CloseSettings" method="_on_pressed"]
