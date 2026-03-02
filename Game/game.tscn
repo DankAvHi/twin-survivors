@@ -1,12 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://by6rc0rsp5mnl"]
+[gd_scene format=3 uid="uid://by6rc0rsp5mnl"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4oc8p"]
+[ext_resource type="Script" uid="uid://cndsplu07cci3" path="res://Game/parallax_2d.gd" id="1_7raqb"]
+[ext_resource type="Texture2D" uid="uid://ddi4pk824kelw" path="res://assets/BackgroundGrass.jpg" id="1_bk3v5"]
+[ext_resource type="Script" uid="uid://dpyq4drr7sda3" path="res://Game/game.gd" id="1_jcm6v"]
+[ext_resource type="PackedScene" uid="uid://cvju0ciwvx21v" path="res://Player/player.tscn" id="2_1r4le"]
+[ext_resource type="Script" uid="uid://d3srvw03i7md5" path="res://Game/camera_2d.gd" id="5_fwxkx"]
+[ext_resource type="PackedScene" uid="uid://dye1y5a4s7e1" path="res://PauseMenu/pause_menu.tscn" id="6_qmv3x"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1366235482]
+process_mode = 3
+script = ExtResource("1_jcm6v")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1727594879]
+process_mode = 1
+repeat_size = Vector2(60, 40)
+script = ExtResource("1_7raqb")
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=514372187]
+rotation = -1.5707964
+texture = ExtResource("1_bk3v5")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = SubResource("PlaceholderTexture2D_4oc8p")
+[node name="Process" type="Node2D" parent="." unique_id=79531296]
+process_mode = 1
+
+[node name="Player" parent="Process" unique_id=1779517568 instance=ExtResource("2_1r4le")]
+
+[node name="Camera2D" type="Camera2D" parent="Process" unique_id=1310905476]
+script = ExtResource("5_fwxkx")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1671750926]
+process_mode = 1
+
+[node name="MainHUD" type="MarginContainer" parent="UI" unique_id=138445354]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" parent="." unique_id=1459913619 instance=ExtResource("6_qmv3x")]
+visible = false
+size_flags_horizontal = 3
+size_flags_vertical = 3

@@ -1,12 +1,11 @@
-[gd_scene format=3 uid="uid://cdpupmkhswmw4"]
+[gd_scene format=3 uid="uid://dye1y5a4s7e1"]
 
-[ext_resource type="Texture2D" uid="uid://dd43ywkfidutk" path="res://assets/MainMenu.jpg" id="1_i26rj"]
-[ext_resource type="Script" uid="uid://duvhhyh02bq0b" path="res://MainMenu/start.gd" id="2_3clmd"]
-[ext_resource type="Script" uid="uid://bh17u4sgqxcyp" path="res://MainMenu/change_window_mode.gd" id="2_eiy7p"]
-[ext_resource type="Script" uid="uid://bacpjasy5r40p" path="res://MainMenu/open_settings.gd" id="2_h7a2f"]
-[ext_resource type="Script" uid="uid://1ty31hf71kf" path="res://MainMenu/exit.gd" id="3_430ii"]
-[ext_resource type="Script" uid="uid://y27m8j2eo7bp" path="res://MainMenu/close_settings.gd" id="4_qoqlk"]
-[ext_resource type="Script" uid="uid://ln7uh0jilp0" path="res://MainMenu/change_resolution.gd" id="5_3p42x"]
+[ext_resource type="Script" uid="uid://b5gw20yg0iqqo" path="res://PauseMenu/pause_menu.gd" id="1_hy7yv"]
+[ext_resource type="Script" uid="uid://bacpjasy5r40p" path="res://MainMenu/open_settings.gd" id="3_8lwni"]
+[ext_resource type="Script" uid="uid://1ty31hf71kf" path="res://MainMenu/exit.gd" id="4_a5bs5"]
+[ext_resource type="Script" uid="uid://bh17u4sgqxcyp" path="res://MainMenu/change_window_mode.gd" id="5_ynw3s"]
+[ext_resource type="Script" uid="uid://ln7uh0jilp0" path="res://MainMenu/change_resolution.gd" id="6_4nmer"]
+[ext_resource type="Script" uid="uid://y27m8j2eo7bp" path="res://MainMenu/close_settings.gd" id="7_767pu"]
 
 [sub_resource type="SystemFont" id="SystemFont_i26rj"]
 subpixel_positioning = 0
@@ -17,22 +16,25 @@ font_size = 64
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[node name="MainMenu" type="Control" unique_id=1459913619]
+[node name="PauseMenu" type="Control" unique_id=1459913619]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hy7yv")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=954725746]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2104287902]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_i26rj")
+color = Color(1, 1, 1, 0.4627451)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1428526197]
 layout_mode = 1
@@ -47,26 +49,25 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/MainScreen" unique_id=1484101154]
 layout_mode = 2
-text = "Twin Survivors"
+text = "Стопанулись"
 label_settings = SubResource("LabelSettings_eiy7p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MainScreen" unique_id=890105822]
 layout_mode = 2
 
-[node name="Start" type="Button" parent="CenterContainer/MainScreen/VBoxContainer" unique_id=244826388]
+[node name="Continue" type="Button" parent="CenterContainer/MainScreen/VBoxContainer" unique_id=244826388]
 layout_mode = 2
-text = "Сделать джамп"
-script = ExtResource("2_3clmd")
+text = "Двигаемся по некселю"
 
 [node name="Settings" type="Button" parent="CenterContainer/MainScreen/VBoxContainer" unique_id=355891304]
 layout_mode = 2
 text = "Крутилки"
-script = ExtResource("2_h7a2f")
+script = ExtResource("3_8lwni")
 
 [node name="Exit" type="Button" parent="CenterContainer/MainScreen/VBoxContainer" unique_id=2140666859]
 layout_mode = 2
 text = "Ливнуть"
-script = ExtResource("3_430ii")
+script = ExtResource("4_a5bs5")
 
 [node name="SettingsScreen" type="VBoxContainer" parent="CenterContainer" unique_id=1038699910]
 visible = false
@@ -83,7 +84,7 @@ layout_mode = 2
 [node name="ChangeWindowMode" type="CheckButton" parent="CenterContainer/SettingsScreen/VBoxContainer" unique_id=1649257055]
 layout_mode = 2
 text = "На весь моник"
-script = ExtResource("2_eiy7p")
+script = ExtResource("5_ynw3s")
 
 [node name="ChangeResolutionContainer" type="HBoxContainer" parent="CenterContainer/SettingsScreen/VBoxContainer" unique_id=1021796854]
 layout_mode = 2
@@ -102,14 +103,14 @@ popup/item_0/text = "1280x720"
 popup/item_0/id = 0
 popup/item_1/text = "1920x1080"
 popup/item_1/id = 1
-script = ExtResource("5_3p42x")
+script = ExtResource("6_4nmer")
 
 [node name="CloseSettings" type="Button" parent="CenterContainer/SettingsScreen/VBoxContainer" unique_id=320402149]
 layout_mode = 2
 text = "Камбэк"
-script = ExtResource("4_qoqlk")
+script = ExtResource("7_767pu")
 
-[connection signal="pressed" from="CenterContainer/MainScreen/VBoxContainer/Start" to="CenterContainer/MainScreen/VBoxContainer/Start" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/MainScreen/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CenterContainer/MainScreen/VBoxContainer/Settings" to="CenterContainer/MainScreen/VBoxContainer/Settings" method="_on_pressed"]
 [connection signal="pressed" from="CenterContainer/MainScreen/VBoxContainer/Exit" to="CenterContainer/MainScreen/VBoxContainer/Exit" method="_on_pressed"]
 [connection signal="pressed" from="CenterContainer/SettingsScreen/VBoxContainer/ChangeWindowMode" to="CenterContainer/SettingsScreen/VBoxContainer/ChangeWindowMode" method="_on_pressed"]

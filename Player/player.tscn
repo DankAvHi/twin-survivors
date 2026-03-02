@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cvju0ciwvx21v"]
+
+[ext_resource type="Script" uid="uid://csdn1dopfadsv" path="res://Game/player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://bo6t554fq2qu3" path="res://assets/TheDestenyPlay_sprite.png" id="2_btcbx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
+radius = 51.1957
+
+[node name="Player" type="CharacterBody2D" unique_id=1779517568]
+motion_mode = 1
+script = ExtResource("1_4ntmi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=572152697]
+shape = SubResource("CircleShape2D_4ntmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=99185712]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_btcbx")
