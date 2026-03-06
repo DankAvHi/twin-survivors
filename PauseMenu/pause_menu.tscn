@@ -16,19 +16,12 @@ font_size = 64
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
-[node name="PauseMenu" type="Control" unique_id=1459913619]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PauseMenu" type="CanvasLayer" unique_id=156101167]
+process_mode = 2
 script = ExtResource("1_hy7yv")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2104287902]
 process_mode = 3
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -37,7 +30,6 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0.4627451)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1428526197]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

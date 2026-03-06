@@ -1,8 +1,12 @@
 extends OptionButton
 
 const sizes = {
-	0:Vector2i(1280,720),
-	1:Vector2i(1920,1080)
+	0:Vector2i(800,600),
+	1:Vector2i(1024,768),
+	2:Vector2i(1280,720),
+	3:Vector2i(1920,1080),
+	4:Vector2i(2560,1440),
+	5:Vector2i(3840,2160),
 }
 
 func _on_window_size_changed()->void:
