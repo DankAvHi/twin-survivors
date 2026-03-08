@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxs2tjhxdjaja" path="res://assets/TheDestenyPlayNightmare.png" id="2_am0pq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqilm"]
-size = Vector2(250, 272)
+size = Vector2(100, 108)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=216994871]
 motion_mode = 1
@@ -14,4 +14,5 @@ script = ExtResource("1_px1sc")
 shape = SubResource("RectangleShape2D_eqilm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838616094]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_am0pq")

@@ -4,10 +4,12 @@ const SPEED = 300.0
 const JOYSTICK_DEADZONE = 10.0  
 const MAX_JOYSTICK_RADIUS = 100.0
 
+var health = 100
+
 var is_dragging = false
 var drag_start_position = Vector2.ZERO
 
-func _physics_process(delta: float) -> void:
+func _movement(delta: float) -> void:
 	var horizontal_direction := Input.get_axis("ui_left", "ui_right")
 	var vertical_direction := Input.get_axis("ui_up", "ui_down")
 	
@@ -41,3 +43,7 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * SPEED
 	
 	move_and_slide()
+
+
+func _physics_process(delta: float) -> void:
+	_movement(delta)

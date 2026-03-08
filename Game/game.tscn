@@ -7,7 +7,12 @@
 [ext_resource type="Script" uid="uid://8cdfmkndtqdo" path="res://Game/timer_label.gd" id="2_oomkl"]
 [ext_resource type="Script" uid="uid://d3srvw03i7md5" path="res://Game/camera_2d.gd" id="5_fwxkx"]
 [ext_resource type="PackedScene" uid="uid://dye1y5a4s7e1" path="res://PauseMenu/pause_menu.tscn" id="6_qmv3x"]
-[ext_resource type="PackedScene" uid="uid://cgtw48cbkbtcv" path="res://Enemy/enemy.tscn" id="8_buohc"]
+
+[sub_resource type="Curve2D" id="Curve2D_buohc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1280, 0, 0, 0, 0, 0, 1280, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Game" type="Node2D" unique_id=1366235482]
 script = ExtResource("1_jcm6v")
@@ -54,7 +59,8 @@ texture = ExtResource("1_bk3v5")
 [node name="Camera2D" type="Camera2D" parent="World" unique_id=1310905476]
 script = ExtResource("5_fwxkx")
 
-[node name="Enemy" parent="World" unique_id=216994871 instance=ExtResource("8_buohc")]
-target = NodePath("../Player")
+[node name="Path2D" type="Path2D" parent="World" unique_id=856032562]
+curve = SubResource("Curve2D_buohc")
+metadata/_edit_group_ = true
 
 [connection signal="timeout" from="UI/MainHUD/Timer" to="UI/MainHUD/Label" method="_on_timer_timeout"]

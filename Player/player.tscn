@@ -16,3 +16,12 @@ shape = SubResource("CircleShape2D_4ntmi")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=99185712]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_btcbx")
+
+[node name="Healthbar" type="Node2D" parent="." unique_id=1320040020]
+
+[node name="max" type="Line2D" parent="Healthbar" unique_id=56544478]
+points = PackedVector2Array(-50, -60, 50, -60)
+
+[node name="current" type="Line2D" parent="Healthbar" unique_id=575043949]
+points = PackedVector2Array(-50, -60, 50, -60)
+default_color = Color(1, 0, 0, 1)
